@@ -1,4 +1,4 @@
-import { Box, Flex, Icon, Progress, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Progress, Table, Tbody, Td, Text, Th, Thead, Tr, useColorModeValue } from '@chakra-ui/react';
 import {
 	createColumnHelper,
 	flexRender,
@@ -11,7 +11,7 @@ import Card from 'components/card/Card';
 import Menu from 'components/menu/MainMenu';
 import * as React from 'react';
 
-import { MdCancel, MdCheckCircle, MdOutlineError } from 'react-icons/md';
+import { MdCancel, MdCheckCircle, MdOutlineError, MdVisibility } from 'react-icons/md';
 
 
 
@@ -20,6 +20,7 @@ type RowObj = {
 	status: string;
 	date: string; 
 	progress: number;
+	action: void;
 };
 
 const columnHelper = createColumnHelper<RowObj>();
@@ -125,6 +126,20 @@ const CameraTable = (props: { tableData: any }) => {
 				<Flex align='center'>
 					<Progress variant='table' colorScheme='brandScheme' h='8px' w='108px' value={info.getValue()} />
 				</Flex>
+			)
+		}),
+		columnHelper.accessor('action', {
+			id: 'action',
+			header: () => <Text />,
+			cell: (info) => (
+				<Button>
+					<Icon
+						w='24px'
+						h='24px'
+						me='5px'
+						as={MdVisibility}
+					/>
+				</Button>
 			)
 		})
 	];
