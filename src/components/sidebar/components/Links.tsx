@@ -48,6 +48,7 @@ export function SidebarLinks(props: {
 											</Box>
 											<Text
 												me='auto'
+												display={{ base: 'block', lg: 'none' }}
 												color={activeRoute(route.path.toLowerCase()) ? activeColor : textColor}
 												fontWeight={activeRoute(route.path.toLowerCase()) ? 'bold' : 'normal'}>
 												{route.name}
