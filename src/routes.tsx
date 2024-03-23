@@ -2,6 +2,7 @@ import { Icon } from '@chakra-ui/react';
 import { MdBarChart, MdPerson, MdHome, MdLock, MdOutlineShoppingCart } from 'react-icons/md';
 
 // Admin Imports
+import HomeDashboard from 'views/admin/home';
 import MainDashboard from 'views/admin/default';
 import NFTMarketplace from 'views/admin/marketplace';
 import Profile from 'views/admin/profile';
@@ -12,6 +13,13 @@ import RTL from 'views/admin/rtl';
 import SignInCentered from 'views/auth/signIn';
 
 const routes = [
+	{
+		name: 'Home',
+		layout: '/admin',
+		path: '/home',
+		icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
+		component: HomeDashboard
+	},
 	{
 		name: 'Main Dashboard',
 		layout: '/admin',
