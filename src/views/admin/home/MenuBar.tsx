@@ -18,6 +18,7 @@ const MenuBar = () => {
 	const boxBg = useColorModeValue('secondaryGray.300', 'whiteAlpha.100');
 	
 	const [showModal, setShowModal] = React.useState(false);
+	const [currentSelection, setCurrentSelection] = React.useState(null);
 
 	const menuItems = [
 		{ id: 1, name: 'Servers', icon: FaServer, color: 'red', path: '/servers' },
@@ -33,8 +34,18 @@ const MenuBar = () => {
 		{ id: 11, name: 'Shortcuts', icon: SiShortcut, color: 'lime', path: '/shortcuts'}
 	];
 
-	const handleIconClickEvent = () => {
+	const handleIconClickEvent = (name: string) => {
 		setShowModal(!showModal);	
+		setCurrentSelection(name);
+	}
+
+	const handleRenderSelection = () => {
+		switch (currentSelection) {
+			case 'Cameras':
+				return <CameraManagement />;
+			default:
+				return null;
+		}
 	}
 
     return (
@@ -46,13 +57,15 @@ const MenuBar = () => {
 					h='56px'
 					bg={boxBg}
 					icon={<Icon w='32px' h='32px' as={item.icon} color={brandColor} />}
-					onClick={handleIconClickEvent}
+					onClick={() => handleIconClickEvent(item.name)}
 				/>
 			))}
 			<DisplayModal 
 				displayModal={showModal} 
-				onModalClose={() => handleIconClickEvent()}>
-					<CameraManagement />
+				onModalClose={() => handleIconClickEvent(currentSelection)}>
+					<React.Fragment>
+						{handleRenderSelection()}
+					</React.Fragment>
 			</DisplayModal>
 		</React.Fragment>
     );
