@@ -47,7 +47,15 @@
     "downlevelIteration": true,
     "baseUrl": "src",
     "paths": {
-      "@assets/*": ["./src/assetsassets/*"]
+      "@assets/*": ["./src/assetsassets/*"],
+      "@components/*": ["./src/components/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@theme/*": ["./src/theme/*"],
+      "@types/*": ["./src/types/*"],
+      "@variables/*": ["./src/variables/*"],
+      "@views/*": ["./src/views/*"],
+
     },
   },
   "include": [
