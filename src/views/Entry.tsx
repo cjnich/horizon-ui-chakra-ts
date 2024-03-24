@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthStack from "views/auth";
 import HomeStack from "views/admin";
 
@@ -12,9 +12,17 @@ import { GlobalStateContext } from "contexts/Global";
  */
 const Entry = () => {
     const { isMockAuthenticated } = useContext(GlobalStateContext);
+    const [ authenticated, setAuthenticated ] = useState(false);
+
+    useEffect(() => {
+        console.log("here 2", isMockAuthenticated);
+        setAuthenticated(isMockAuthenticated);
+    }, [isMockAuthenticated]);
+
+    console.log("here 1");
 
     return (
-        isMockAuthenticated ? <HomeStack/> : <AuthStack />
+        authenticated ? <HomeStack/> : <AuthStack />
     );
 };
 
